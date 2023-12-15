@@ -26,7 +26,7 @@ dependencies = [
 [[package]]
 name = "riscv-peripheral"
 version = "0.1.0"
-source = "git+https://github.com/onsdagens/riscv-peripheral#14c30d2ecddb68784d9b30620bc0f94e265d3562"
+source = "git+https://github.com/onsdagens/riscv-peripheral?branch=checkpoint#9eca109f534a9d9645062bf8d1e7459f235f41ba"
 dependencies = [
  "embedded-hal",
  "riscv",

@@ -1,3 +1,5 @@
+#![no_std]
+
 use riscv_peripheral::clic::*;
 
 riscv_peripheral::clic_codegen!(base 0x5000);

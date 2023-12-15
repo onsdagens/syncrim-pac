@@ -32,7 +32,7 @@ unsafe impl InterruptNumber for Interrupt {
 }
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
-#[repr(u16)]
+#[repr(u8)]
 pub enum Priority {
     P0 = 0,
     P1 = 1, 

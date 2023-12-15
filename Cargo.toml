@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 
-riscv-peripheral = {git = "https://github.com/onsdagens/riscv-peripheral", branch="checkpoint"}
+riscv-peripheral = {git = "https://github.com/onsdagens/riscv-peripheral"}

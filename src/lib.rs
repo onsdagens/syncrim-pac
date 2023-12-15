@@ -2,7 +2,7 @@
 
 use riscv_peripheral::clic::*;
 
-riscv_peripheral::clic_codegen!(base 0x5000);
+riscv_peripheral::clic_codegen!(base 0x0000);
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[repr(u16)]
 pub enum Interrupt {

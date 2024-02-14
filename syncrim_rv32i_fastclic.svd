@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
+  <vendor>SyncRim</vendor>
+  <vendorID>SyncRim</vendorID>
+  <name>SyncRim RV32I FASTCLIC</name>
+  <series>SyncRim RV32I</series>
+  <version>0</version>
+  <description>RV32I Model equipped with a variant of the CLIC</description>
+  <licenseText></licenseText>
+  <cpu>
+    <name>RV32I</name>
+    <revision>r0p1</revision>
+    <endian>little</endian>
+    <mpuPresent>false</mpuPresent>
+    <fpuPresent>false</fpuPresent>
+    <nvicPrioBits>8</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
+  <addressUnitBits>32</addressUnitBits>
+  <width>32</width>
+  <resetValue>0x00000000</resetValue>
+  <resetMask>0xFFFFFFFF</resetMask>
+  <peripherals>
+    <peripheral>
+      <name>GPIO</name>
+      <description>General Purpose Input/Output</description>
+      <groupname>GPIO</groupname>
+      <baseAddress>0x60000000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x14</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>ENABLE</name>
+          <description>GPIO Pin Enable</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>ENABLE</name>
+              <description>GPIO Pin Enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CONFIG</name>
+          <description>GPIO Pin I/O Config</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>CONFIG</name>
+              <description>GPIO Pin I/O Config</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INTERRUPT_ENABLE</name>
+          <description>GPIO Pin Interrupt Enable</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>INTERRUPT_ENABLE</name>
+              <description>GPIO Pin Interrupt Enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SET</name>
+          <description>GPIO Pin Set</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>SET</name>
+              <description>GPIO Pin Set</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>write-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>Clear</name>
+          <description>GPIO Pin Clear</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>Clear</name>
+              <description>GPIO Pin Clear</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>write-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>TOGGLE</name>
+          <description>GPIO Pin Toggle</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>TOGGLE</name>
+              <description>GPIO Pin Toggle</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>write-only</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+  </peripherals>
+</device>

@@ -124,5 +124,78 @@
         </register>
       </registers>
     </peripheral>
+    <peripheral>
+      <name>MTIME</name>
+      <description>Timer Peripheral</description>
+      <groupname>MTIME</groupname>
+      <baseAddress>0x5000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x10</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>MTIME_LO</name>
+          <description>Timer Low 32 bits</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>MTIME_LO</name>
+              <description>Timer Low 32 bits</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MTIME_HI</name>
+          <description>Timer Hi 32 bits</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>MTIME_HI</name>
+              <description>Timer Hi 32 bits</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MTIME_COMP_LO</name>
+          <description>Timer Comp Low 32 bits</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>MTIME_COMP_LO</name>
+              <description>Timer Comp Low 32 bits</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MTIME_COMP_HI</name>
+          <description>Timer Comp Hi 32 bits</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <fields>
+            <field>
+              <name>MTIME_COMP_HI</name>
+              <description>Timer Comp Hi 32 bits</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
   </peripherals>
 </device>

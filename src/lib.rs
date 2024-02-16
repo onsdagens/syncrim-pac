@@ -24,27 +24,26 @@ pub union Vector {
 #[link_section = ".vector_table.interrupts"]
 #[no_mangle]
 pub static __INTERRUPTS: [Vector; 0] = [];
-pub use clic::*;
-//#[doc = r"Enumeration of all the interrupts."]
-//#[derive(Copy, Clone, Debug, PartialEq, Eq)]
-//pub enum Interrupt {
-//    Interrupt0 = 0,
-//    Interrupt1 = 1,
-//    Interrupt2 = 2,
-//    Interrupt3 = 3,
-//    Interrupt4 = 4,
-//    Interrupt5 = 5,
-//    Interrupt6 = 6,
-//    Interrupt7 = 7,
-//    Interrupt8 = 8,
-//    Interrupt9 = 9,
-//}
-//unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
-//    #[inline(always)]
-//    fn number(self) -> u16 {
-//        match self {}
-//    }
-//}
+#[doc = r"Enumeration of all the interrupts."]
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+pub enum Interrupt {
+    Interrupt0 = 0,
+    Interrupt1 = 1,
+    Interrupt2 = 2,
+    Interrupt3 = 3,
+    Interrupt4 = 4,
+    Interrupt5 = 5,
+    Interrupt6 = 6,
+    Interrupt7 = 7,
+    Interrupt8 = 8,
+    MTIME = 9,
+}
+// unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
+//     #[inline(always)]
+//     fn number(self) -> u16 {
+//         match self {}
+//     }
+// }
 #[doc = "General Purpose Input/Output"]
 pub struct GPIO {
     _marker: PhantomData<*const ()>,
@@ -91,6 +90,52 @@ impl core::fmt::Debug for GPIO {
 }
 #[doc = "General Purpose Input/Output"]
 pub mod gpio;
+#[doc = "Timer Peripheral"]
+pub struct MTIME {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for MTIME {}
+impl MTIME {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const mtime::RegisterBlock = 0x5000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const mtime::RegisterBlock {
+        Self::PTR
+    }
+    #[doc = r" Steal an instance of this peripheral"]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Ensure that the new instance of the peripheral cannot be used in a way"]
+    #[doc = r" that may race with any existing instances, for example by only"]
+    #[doc = r" accessing read-only or write-only registers, or by consuming the"]
+    #[doc = r" original peripheral and using critical sections to coordinate"]
+    #[doc = r" access between multiple new instances."]
+    #[doc = r""]
+    #[doc = r" Additionally, other software such as HALs may rely on only one"]
+    #[doc = r" peripheral instance existing to ensure memory safety; ensure"]
+    #[doc = r" no stolen instances are passed to such software."]
+    pub unsafe fn steal() -> Self {
+        Self {
+            _marker: PhantomData,
+        }
+    }
+}
+impl Deref for MTIME {
+    type Target = mtime::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for MTIME {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("MTIME").finish()
+    }
+}
+#[doc = "Timer Peripheral"]
+pub mod mtime;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals."]
@@ -98,6 +143,8 @@ static mut DEVICE_PERIPHERALS: bool = false;
 pub struct Peripherals {
     #[doc = "GPIO"]
     pub GPIO: GPIO,
+    #[doc = "MTIME"]
+    pub MTIME: MTIME,
 }
 impl Peripherals {
     #[doc = r" Returns all the peripherals *once*."]
@@ -121,6 +168,9 @@ impl Peripherals {
         DEVICE_PERIPHERALS = true;
         Peripherals {
             GPIO: GPIO {
+                _marker: PhantomData,
+            },
+            MTIME: MTIME {
                 _marker: PhantomData,
             },
         }

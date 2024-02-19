@@ -25,19 +25,8 @@ pub union Vector {
 #[no_mangle]
 pub static __INTERRUPTS: [Vector; 0] = [];
 #[doc = r"Enumeration of all the interrupts."]
-#[derive(Copy, Clone, Debug, PartialEq, Eq)]
-pub enum Interrupt {
-    Interrupt0 = 0,
-    Interrupt1 = 1,
-    Interrupt2 = 2,
-    Interrupt3 = 3,
-    Interrupt4 = 4,
-    Interrupt5 = 5,
-    Interrupt6 = 6,
-    Interrupt7 = 7,
-    Interrupt8 = 8,
-    MTIME = 9,
-}
+//#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+pub use clic::*;
 // unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 //     #[inline(always)]
 //     fn number(self) -> u16 {
